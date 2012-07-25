@@ -10,7 +10,12 @@
 <p><img id="target1" src="taquin2.jpg" width="800" height="600"></p>
 <script>
 	$(document).ready(function(){
-		$('#target1').taquin();	
+		$('#target1').taquin({
+			surprise : {
+				image: 'surprise.jpg',
+				timer : 15
+					}
+		});	
 	});
 
 </script>

@@ -11,7 +11,8 @@
     		  nbCol : 4,
     		  nbRow : 4,
     		  removed : 16,
-    		  bgColor : '#ffffff'
+    		  bgColor : '#ffffff',
+    		  surprise : null
       };
       
       var options = $.extend(defaults, options);
@@ -43,6 +44,9 @@
         	$game.css({position:'relative', width:gameWidth+'px', height:gameHeight+'px', display:'block', backgroundColor:o.bgColor});
         	srcImg.after($game); // Ajout du conteneur
         	addItems();
+        	
+        	// Si surprise programmée
+        	o.surprise != null && o.surprise.timer != null ? surpriseDelay() : '';
         	
         }
         
@@ -112,6 +116,19 @@
 			
 			
 		}
+		
+		
+		// Affichage d'une image "surprise" au bout d'un temps défini
+		function surpriseDelay(){
+			setTimeout(function(){affSurprise()},o.surprise.timer * 1000);
+		}
+		
+		// Affichage de l'image surprise
+		function affSurprise(){
+			$game.append('<img src="'+o.surprise.image+'" style="z-index:1000;position:absolute;top:0;left:0;width:'+gameWidth+'px;height:'+gameHeight+'px" />');
+		}
+		
+
         
         
         
